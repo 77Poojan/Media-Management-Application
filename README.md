@@ -12,3 +12,7 @@ command:
 ```
 docker compose up -d --build
 ```
+## Web Application 
+```
+http://localhost:8080/main-page/
+```
