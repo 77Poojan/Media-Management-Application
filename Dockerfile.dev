@@ -1,0 +1,17 @@
+FROM python:3.10
+ENV PYTHONUNBUFFERED 1
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update \
+    && pip install --no-cache-dir --upgrade pip
+
+WORKDIR /backend
+COPY ./requirements.txt /backend
+RUN pip install --no-cache-dir --requirement /backend/requirements.txt
+RUN pip install --upgrade psycopg2-binary
+
+COPY . /backend
+
+EXPOSE 8080
+

@@ -1,0 +1,403 @@
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fa; /* Soft background color */
+}
+
+.container {
+  max-width: 1200px; /* Set the max width of the container */
+  width: 100%; /* Allow the container to be responsive */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h4 {
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+/* File upload form */
+form {
+  background-color: #ecf0f1;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Set a max width for the form */
+  margin: 0 auto;
+}
+
+/* Input and button styles */
+.form-group label {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+#fileInput {
+  font-size: 1rem;
+}
+
+button#uploadButton {
+  font-size: 1.1rem; /* Slightly larger font size */
+  padding: 10px 20px; /* More padding for better clickability */
+  border-radius: 8px;
+  background-color: #58d68d; /* Light green color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#uploadButton:hover {
+  background-color: #48c78e; /* Slightly darker shade on hover */
+}
+
+/* File list display */
+.file-list {
+  margin-top: 15px;
+  max-height: 250px; /* Increased height for better visibility */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.file-name {
+  word-break: break-word;
+  color: #333;
+  font-weight: 500;
+}
+
+.remove-btn {
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.remove-btn:hover {
+  color: #c0392b;
+}
+
+/* File Table */
+.table {
+  width: 100%; /* Make the table span full width */
+  margin-top: 2rem;
+  border-collapse: separate; /* Use separate borders for a cleaner look */
+  border-radius: 8px; /* Add border radius to the table */
+  overflow: hidden; /* Hide overflow to make corners rounded */
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #58d68d; /* Lighter green background */
+  color: white;
+  border-top-left-radius: 8px; /* Rounded top-left corner */
+  border-top-right-radius: 8px; /* Rounded top-right corner */
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+td:first-child,
+th:first-child {
+  border-left: none; /* Optional: Remove the left border for cleaner edges */
+}
+
+td:last-child,
+th:last-child {
+  border-right: none; /* Optional: Remove the right border for cleaner edges */
+}
+
+/* Pagination */
+.pagination {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination .page-item {
+  margin: 0 5px;
+}
+
+.pagination .page-link {
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: #58d68d; /* Lighter green color */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Rounded corners for pagination */
+}
+
+.pagination .page-link:hover {
+  background-color: #48c78e; /* Darker green on hover */
+  color: white;
+}
+
+.pagination .disabled .page-link {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .header h4 {
+    font-size: 1.5rem; /* Smaller font size for mobile */
+  }
+
+  button#uploadButton {
+    width: 100%; /* Make the button full width on mobile */
+  }
+
+  .file-list {
+    max-height: 200px; /* Reduce height for mobile */
+  }
+
+  .table {
+    font-size: 0.9rem; /* Smaller font size in table for mobile */
+  }
+
+  .pagination {
+    font-size: 0.9rem; /* Smaller pagination on mobile */
+  }
+}
+
+/* Large screen responsiveness */
+@media (min-width: 1200px) {
+  .container {
+    width: 80%; /* Reduce container width for large screens */
+  }
+
+  .header h4 {
+    font-size: 2.5rem;
+  }
+
+  .file-list {
+    max-height: 300px; /* More space for file list */
+  }
+}
+
+/* File Upload Progress Bar */
+.progress-bar-container {
+  margin-top: 15px;
+  background-color: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #58d68d;
+  width: 0%; /* Initial width for animation */
+  transition: width 0.4s ease;
+}
+
+/* Pagination Active State */
+.pagination .active .page-link {
+  background-color: #58d68d;
+  color: white;
+  border: none;
+}
+
+/* Table Row Hover Effect */
+tr:hover td {
+  background-color: #dff0d8; /* Light green for hovered row */
+  cursor: pointer;
+}
+
+/* Focus Styles for Accessibility */
+button#uploadButton:focus,
+.pagination .page-link:focus {
+  outline: 2px solid #58d68d;
+  outline-offset: 2px;
+}
+
+/* Subtle Click Animation for Buttons */
+button#uploadButton:active,
+.pagination .page-link:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Larger Screen Enhancements */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 70%; /* Reduce container width further for ultra-wide screens */
+  }
+
+  .file-list {
+    max-height: 400px; /* Increased height for better visibility */
+  }
+
+  .header h4 {
+    font-size: 3rem; /* Larger text for ultra-wide screens */
+  }
+}
+
+/* Pagination Controls Container */
+#paginationControls {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  align-items: center; /* Center buttons vertically */
+  gap: 20px; /* Space between the buttons */
+  margin-top: 20px;
+}
+
+/* Remove default blue background and border color on hover or click */
+#paginationControls .circle-btn {
+  background-color: white !important; /* Remove background color */
+  border: 2px solid green; /* Ensure the border stays green */
+  color: green; /* Ensure the text/icon color is green */
+}
+
+/* Remove blue background when disabled */
+#paginationControls .circle-btn:disabled {
+  background-color: white !important; /* Maintain the white background */
+  border: 2px solid lightgray; /* Light gray border for disabled state */
+  opacity: 0.5; /* Reduce opacity for disabled state */
+}
+
+/* Hover effect without the blue color */
+#paginationControls .circle-btn:hover:not(:disabled) {
+  background-color: #e0ffe0; /* Light green background on hover */
+  transform: scale(1.1); /* Slightly enlarge button on hover */
+  border: 2px solid green; /* Ensure the border remains green */
+  color: green; /* Ensure icon color stays green */
+}
+
+/* Focus Styles (for accessibility) */
+#paginationControls .circle-btn:focus {
+  outline: 2px solid green; /* Green outline when focused */
+  outline-offset: 2px;
+}
+
+/* Active state (when clicked) */
+#paginationControls .circle-btn:active {
+  transform: scale(0.98); /* Slightly shrink button on click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for active state */
+}
+
+/* Circular Button Style */
+.circle-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid green;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Disabled State */
+.circle-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  border: 2px solid lightgray;
+  background-color: white;
+}
+
+/* Hover Effect */
+.circle-btn:hover:not(:disabled) {
+  background-color: #e0ffe0;
+  transform: scale(1.1);
+  border: 2px solid green;
+}
+
+/* Arrow Styles */
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: solid green;
+  border-width: 2px 2px 0 0;
+  transform: rotate(45deg);
+}
+
+.arrow.left {
+  transform: rotate(225deg);
+  position: absolute;
+  left: 18px;
+}
+
+.arrow.right {
+  transform: rotate(45deg);
+  position: absolute;
+  right: 18px;
+}
+
+/* Custom styles for close button */
+.custom-close {
+  font-size: 3rem;
+  position: absolute;
+  top: 10px;
+  right: -200px;
+  z-index: 1050;
+}
+
+/* Center the modal content */
+#filePreviewModal .modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#filePreviewModal .modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Center the preview content inside the container */
+#filePreviewContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Optional: Adjust the button to look better in the center */
+#toggleAudio {
+  display: block;
+  margin: 10px auto;
+}

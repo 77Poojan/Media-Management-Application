@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Management Application</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="container mt-2">
+      <!-- Header Section -->
+      <div class="header d-flex justify-content-center align-items-center mb-4">
+        <!-- Optionally add header content if needed -->
+      </div>
+
+      <!-- Success and Error Messages -->
+      <div id="successMessage"></div>
+      <div id="errorMessage"></div>
+
+      <!-- File Upload Form -->
+      <form id="uploadForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <img
+            src="{% static 'img/logo.png' %}"
+            alt="File Management Logo"
+            style="max-width: 30px; margin-right: 10px"
+            class="logo"
+          />
+          <label for="fileInput" class="font-weight-bold"
+            >Choose files to upload</label
+          >
+          <!-- Static image inside header -->
+          <input
+            type="file"
+            class="form-control-file"
+            id="fileInput"
+            multiple
+            required
+          />
+        </div>
+
+        <!-- File List Display -->
+        <div class="file-list hidden" id="fileList"></div>
+
+        <!-- Upload Button -->
+        <div class="text-center mt-3">
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            id="uploadButton"
+          >
+            Upload All Files
+          </button>
+        </div>
+      </form>
+
+      <!-- Modal for previewing files -->
+      <div
+        class="modal fade"
+        id="filePreviewModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg" role="document">
+          <div id="filePreviewContainer">
+            <!-- Dynamic content will be inserted here -->
+          </div>
+          <!-- Custom Close Button at top right -->
+          <button
+            type="button"
+            class="close custom-close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section for displaying uploaded files -->
+      <div id="fileTableContainer">
+        <h5 class="d-flex align-items-center">
+          Uploaded Files
+          <i
+            class="fas fa-sync-alt ml-3"
+            id="reloadIcon"
+            style="cursor: pointer"
+          ></i>
+          <!-- Reload Icon -->
+        </h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th>File Size (KB)</th>
+              <th>File Type</th>
+              <th>Category</th>
+              <th>Uploaded At</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="fileTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div
+      id="paginationControls"
+      class="d-flex justify-content-center align-items-center mt-3"
+    >
+      <button id="previousButton" class="btn btn-primary circle-btn" disabled>
+        <span class="arrow left"></span>
+      </button>
+      <button id="nextButton" class="btn btn-primary circle-btn" disabled>
+        <span class="arrow right"></span>
+      </button>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage"></div>
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/fileUpload.js' %}"></script>
+    <script src="{% static 'js/filePagination.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Initialize the rotation angle
+      let rotationAngle = 0;
+
+      // Function to rotate the icon
+      function rotateIcon() {
+        // Increment the rotation angle by 90 degrees
+        rotationAngle += 90;
+
+        // Apply the rotation to the icon
+        const icon = document.getElementById("reloadIcon");
+        icon.style.transform = `rotate(${rotationAngle}deg)`;
+        icon.style.transition = "transform 0.3s"; // Smooth transition for the rotation
+      }
+
+      // Add event listener for the icon click to trigger the rotation
+      document
+        .getElementById("reloadIcon")
+        .addEventListener("click", rotateIcon);
+    </script>
+  </body>
+</html>
